@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  minutes: 1
+  notes: MyText
+  category_id: 1
+  user_id: 1
+
+two:
+  minutes: 1
+  notes: MyText
+  category_id: 1
+  user_id: 1
