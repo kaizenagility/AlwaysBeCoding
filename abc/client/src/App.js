@@ -7,6 +7,7 @@ import Auth from './modules/Auth';
 import RegisterForm from './components/RegisterForm';
 import LoginForm from './components/LoginForm';
 import Dashboard from './components/Dashboard';
+import AddLogForm from './components/AddLogForm';
 
 class App extends Component {
   constructor() {
@@ -17,49 +18,53 @@ class App extends Component {
       userDataReceived: false,
       //shouldGoToDash: false,
     };
-    this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this);
-    this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
+    // this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this);
+    // this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
   }
 
-  handleRegisterSubmit(e, data) {
-    e.preventDefault();
-    fetch('/users', {
-      method: 'POST',
-      body: JSON.stringify({
-        user: data,
-      }),
-      headers: {
-        'Content-Type': 'application/json',
-      }
-    }).then(res => res.json())
-      .then(res => {
-        Auth.authenticateToken(res.token);
-        this.setState({
-          auth: Auth.isUserAuthenticated(),
-          //shouldGoToDash: true,
-        });
-      }).catch(err => {
-        console.log(err);
-      })
-  }
+  // handleRegisterSubmit(e, data) {
+  //   e.preventDefault();
+  //   fetch('/users', {
+  //     method: 'POST',
+  //     body: JSON.stringify({
+  //       user: data,
+  //     }),
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     }
+  //   }).then(res => res.json())
+  //     .then(res => {
+  //       Auth.authenticateToken(res.token);
+  //       this.setState({
+  //         auth: Auth.isUserAuthenticated(),
+  //         //shouldGoToDash: true,
+  //       });
+  //     }).catch(err => {
+  //       console.log(err);
+  //     })
+  // }
 
-  handleLoginSubmit(e, data) {
-    e.preventDefault();
-    fetch('/login', {
-      method: 'POST',
-      body: JSON.stringify(data),
-      headers: {
-        'Content-Type': 'application/json',
-      }
-    }).then(res => res.json())
-    .then(res => {
-      Auth.authenticateToken(res.token);
-      this.setState({
-        auth: Auth.isUserAuthenticated(),
-        //shouldGoToDash: true,
-      });
-    }).catch(err => console.log(err));
+  // handleLoginSubmit(e, data) {
+  //   e.preventDefault();
+  //   fetch('/login', {
+  //     method: 'POST',
+  //     body: JSON.stringify(data),
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     }
+  //   }).then(res => res.json())
+  //   .then(res => {
+  //     Auth.authenticateToken(res.token);
+  //     this.setState({
+  //       auth: Auth.isUserAuthenticated(),
+  //       //shouldGoToDash: true,
+  //     });
+  //   }).catch(err => console.log(err));
+  // }
+
+  handleLogFormSubmit() {
+
   }
 
   handleLogout() {
@@ -104,8 +109,8 @@ class App extends Component {
       <Router>
         <div className="App">
          <div className="nav">
-            <Link to="/login">Login</Link>
-            <Link to="/register">Register</Link>
+            <Link to="/login">Login</Link><br />
+            <Link to="/register">Register</Link><br />
             <span onClick={this.handleLogout}>Logout</span>
           </div>
           <Route
@@ -117,8 +122,15 @@ class App extends Component {
             exact path="/login"
             render={() => (this.state.auth)
               ? <Redirect to="/dash" />
-              : <LoginForm handleLoginSubmit={this.handleLoginSubmit} />} />
+              : <LoginForm handleLoginSubmit={this.handleLoginSubmit} />}
+          />
+
+
           <h1>Always Be Coding</h1>
+
+          <AddLogForm />
+
+            <h2>LeaderBoard:</h2>
           { (this.state.userDataReceived)
             ? this.renderUsers()
             : <p>Loading...</p>
