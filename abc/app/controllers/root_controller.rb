@@ -1,5 +1,4 @@
-class ApplicationController < ActionController::API
-
+class RootController < ApplicationController
   def index
     render file: "#{Rails.root}/public/index.html"
   end
