@@ -10,8 +10,8 @@ User.delete_all
 User.create(name: "Kizzle", email: "kai@youaremyjoy.org", bio: "Testing", picture: "Testing")
 User.create(name: "Brian", email: "brian@youaremyjoy.org", bio: "Testing", picture: "Testing")
 Category.delete_all
-Category.create(name: "Coding", user_id: 7)
-Category.create(name: "Art", user_id: 7)
+Category.create(name: "Coding", user_id: 13)
+Category.create(name: "Art", user_id: 13)
 Log.delete_all
-Log.create(minutes: 60, notes: "Testing", category_id: 1, user_id: 7)
-Log.create(minutes: 100, notes: "Testing 2", category_id: 1, user_id: 7)
+Log.create(minutes: 60, notes: "Testing", category_id: 7, user_id: 13)
+Log.create(minutes: 100, notes: "Testing 2", category_id: 7, user_id: 13)
