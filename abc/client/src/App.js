@@ -8,6 +8,7 @@ import RegisterForm from './components/RegisterForm';
 import LoginForm from './components/LoginForm';
 import Dashboard from './components/Dashboard';
 import AddLogForm from './components/AddLogForm';
+import CategoryList from './components/CategoryList';
 
 class App extends Component {
   constructor() {
@@ -72,7 +73,13 @@ class App extends Component {
       headers: {
         'Content-Type': 'application/json',
       }
-    }).then(res => res.json());
+    }).then(res => res.json())
+    .then(res => {
+      this.setState({
+        userData: res,
+        userDataReceived: true,
+      })
+    }).catch(err => console.log(err));
   }
 
   handleLogout() {
@@ -139,6 +146,8 @@ class App extends Component {
 
 
           <AddLogForm handleLogFormSubmit={this.handleLogFormSubmit} />
+
+          <CategoryList />
 
           <Dashboard users={this.state.userData} />
 
