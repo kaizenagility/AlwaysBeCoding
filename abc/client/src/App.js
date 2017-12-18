@@ -16,6 +16,7 @@ class App extends Component {
       auth: Auth.isUserAuthenticated(),
       userData: null,
       userDataReceived: false,
+      userCategories: null,
       //shouldGoToDash: false,
     };
     // this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this);
@@ -106,15 +107,6 @@ class App extends Component {
         <div key={user.id}>
           <p>Name: {user.name}</p>
           <p>Email: {user.email}</p>
-          <ul>
-            {user.categories.map((category, i) => {
-              return(
-                <li key = {i}>
-                  <p> {category.name} </p>
-                </li>
-              )
-            })}
-          </ul>
         </div>
       );
     });
@@ -145,9 +137,10 @@ class App extends Component {
 
           <h1>Always Be Coding</h1>
 
+
           <AddLogForm handleLogFormSubmit={this.handleLogFormSubmit} />
 
-          <Dashboard userData={this.state.userData}/>
+          <Dashboard users={this.state.userData} />
 
             <h2>Leader Board:</h2>
           { (this.state.userDataReceived)
