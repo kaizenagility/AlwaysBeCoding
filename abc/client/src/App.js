@@ -18,6 +18,7 @@ class App extends Component {
       userData: null,
       userDataReceived: false,
       userCategories: null,
+      userLogs: null,
       //shouldGoToDash: false,
     };
     // this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this);
@@ -78,7 +79,7 @@ class App extends Component {
       this.setState({
         userData: res,
         userDataReceived: true,
-      })
+      }).then((res)=>{this.renderUsers();})
     }).catch(err => console.log(err));
   }
 
@@ -112,7 +113,7 @@ class App extends Component {
     return this.state.userData.map((user) => {
       return (
         <div key={user.id}>
-          <p>Name: {user.name}</p>
+          <h3>Name: {user.name}</h3>
           <p>Email: {user.email}</p>
         </div>
       );

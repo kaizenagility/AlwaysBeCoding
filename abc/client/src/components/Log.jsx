@@ -27,7 +27,6 @@ class Log extends Component {
       method: 'DELETE'
     }).then((res)=>{this.renderLogs();})
     .catch(err => console.log(err));
-
   }
   render() {
     return (

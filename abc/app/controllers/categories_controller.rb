@@ -20,7 +20,7 @@ class CategoriesController < ApplicationController
   end
 
   def update
-    log = Cateogry.update(params[:id],
+    category = Category.update(id: params[:id],
                     name: params[:name],
                     user_id: params[:user_id])
     render json: {status: "category update successful", category: category}
