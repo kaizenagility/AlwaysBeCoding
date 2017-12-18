@@ -147,11 +147,11 @@ class App extends Component {
 
           <AddLogForm handleLogFormSubmit={this.handleLogFormSubmit} />
 
-          <CategoryList />
-
           <Dashboard users={this.state.userData} />
 
-            <h2>Leader Board:</h2>
+          <CategoryList />
+
+            <h2>Leader Board</h2>
           { (this.state.userDataReceived)
             ? this.renderUsers()
             : <p>Loading...</p>

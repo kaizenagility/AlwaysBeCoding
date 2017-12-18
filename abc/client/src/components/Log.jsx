@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
-class Dashboard extends Component {
-  constructor(props) {
-    super(props);
+class Log extends Component {
+  constructor() {
+    super();
     this.state = {
       userCategories: null,
       userLogs: null
@@ -20,10 +20,17 @@ class Dashboard extends Component {
   render() {
     return (
       <div className="dash">
-
+          {this.state.userLogs && this.state.userLogs.map((log) =>
+            <div key = {log.id}>
+              <h4> Log: {log.id} </h4>
+              <p>Minutes: {log.minutes} </p>
+              <p>Notes: {log.notes} </p>
+            </div>
+           )}
       </div>
     )
   }
 }
 
-export default Dashboard;
+export default Log;
+

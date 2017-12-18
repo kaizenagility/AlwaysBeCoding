@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Log from './Log.jsx';
 
 class CategoryList extends Component {
   constructor() {
@@ -19,10 +20,10 @@ class CategoryList extends Component {
   render() {
     return (
       <div className="dash">
-        <h2> Categories </h2>
           {this.state.userCategories && this.state.userCategories.map((category) =>
             <div key = {category.id}>
-              <h4> {category.name} </h4>
+              <h2> {category.name} </h2>
+              <Log />
             </div>
            )}
       </div>
