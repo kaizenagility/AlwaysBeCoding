@@ -67,13 +67,11 @@ class App extends Component {
     e.preventDefault();
     fetch('/users/13/categories/7/logs', {
       method: 'POST',
-      body: JSON.stringify({
-        log: data,
-      }),
+      body: JSON.stringify(data),
       headers: {
         'Content-Type': 'application/json',
       }
-    }).then(res => res.json())
+    }).then(res => res.json());
   }
 
   handleLogout() {
@@ -108,6 +106,15 @@ class App extends Component {
         <div key={user.id}>
           <p>Name: {user.name}</p>
           <p>Email: {user.email}</p>
+          <ul>
+            {user.categories.map((category, i) => {
+              return(
+                <li key = {i}>
+                  <p> {category.name} </p>
+                </li>
+              )
+            })}
+          </ul>
         </div>
       );
     });
@@ -120,6 +127,7 @@ class App extends Component {
          <div className="nav">
             <Link to="/login">Login</Link><br />
             <Link to="/register">Register</Link><br />
+            <Link to="/dash">Dashboard</Link> <br />
             <span onClick={this.handleLogout}>Logout</span>
           </div>
           <Route
@@ -137,7 +145,9 @@ class App extends Component {
 
           <h1>Always Be Coding</h1>
 
-          <AddLogForm />
+          <AddLogForm handleLogFormSubmit={this.handleLogFormSubmit} />
+
+          <Dashboard userData={this.state.userData}/>
 
             <h2>Leader Board:</h2>
           { (this.state.userDataReceived)

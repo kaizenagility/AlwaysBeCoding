@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
 class AddLogForm extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       minutes: null,
       notes: null,
