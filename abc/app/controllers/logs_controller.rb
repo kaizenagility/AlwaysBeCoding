@@ -1,15 +1,22 @@
+
 class LogsController < ApplicationController
   def index
-    render json: Log.all
+    @category_id = params[:category_id]
+    render json: Log.where(category_id: @category_id)
   end
+
+  # def index
+  #   render json: Log.all
+  # end
 
   def show
     render json: Log.find(params[:id])
   end
 
   def create
-    log = Log.new(minutes: params[:minutes],
+    log = Log.new(time: params[:time],
                   notes: params[:notes],
+                  link: params[:link],
                   category_id: params[:category_id],
                   user_id: params[:user_id])
     log.save

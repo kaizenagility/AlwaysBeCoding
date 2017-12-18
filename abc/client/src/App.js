@@ -19,11 +19,11 @@ class App extends Component {
       userDataReceived: false,
       userCategories: null,
       userLogs: null,
-      //shouldGoToDash: false,
     };
     // this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this);
     // this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
+    this.handleLogFormSubmit = this.handleLogFormSubmit.bind(this);
   }
 
   // handleRegisterSubmit(e, data) {
@@ -68,7 +68,7 @@ class App extends Component {
 
   handleLogFormSubmit(e, data) {
     e.preventDefault();
-    fetch('/users/13/categories/7/logs', {
+    fetch(`/users/13/categories/${data.category_id}/logs`, {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
@@ -79,7 +79,7 @@ class App extends Component {
       this.setState({
         userData: res,
         userDataReceived: true,
-      }).then((res)=>{this.renderUsers();})
+      })
     }).catch(err => console.log(err));
   }
 
@@ -153,10 +153,10 @@ class App extends Component {
           <CategoryList />
 
             <h2>Leader Board</h2>
-          { (this.state.userDataReceived)
+          { /* (this.state.userDataReceived)
             ? this.renderUsers()
             : <p>Loading...</p>
-          }
+          */}
         </div>
       </Router>
     );

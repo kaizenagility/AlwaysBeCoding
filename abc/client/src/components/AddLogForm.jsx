@@ -4,8 +4,9 @@ class AddLogForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      minutes: null,
+      time: null,
       notes: null,
+      link: null,
       category_id: null,
       user_id: null,
     };
@@ -24,12 +25,17 @@ class AddLogForm extends Component {
     return (
       <div className="addLogForm">
           <form onSubmit={(e) => this.props.handleLogFormSubmit(e, this.state)}>
-            <select name="category_id" value={this.state.value} onChange={this.handleChange}>
-              <option value="3">Coding</option>
-              <option value="4">Art</option>
+            <select name="category_id" value={this.state.category_id} onChange={this.handleChange}>
+              <option value="7">Coding Practice</option>
+              <option value="11">Job Applications</option>
+              <option value="12">Networking Event</option>
+              <option value="14">Project Worklog</option>
+              <option value="13">Career Coaching</option>
+              <option value="15">Other</option>
             </select>
-            <input type="text" name="minutes" placeholder="minutes" value={this.state.minutes} onChange={this.handleChange} />
+            <input type="text" name="time" placeholder="time" value={this.state.time} onChange={this.handleChange} />
             <input type="textarea" name="notes" placeholder="notes" value={this.state.notes} onChange={this.handleChange} />
+            <input type="text" name="link" placeholder="link" value={this.state.link} onChange={this.handleChange} />
             <input type="hidden" name="user_id" value="13" />
             <input type="submit" value="Log It!" />
           </form>

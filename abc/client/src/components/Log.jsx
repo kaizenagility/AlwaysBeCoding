@@ -14,7 +14,7 @@ class Log extends Component {
     this.renderLogs();
   }
   renderLogs(){
-    fetch('/users/13/categories/7/logs')
+    fetch(`/users/13/categories/${this.props.id}/logs`)
       .then(res => res.json())
       .then(res => {
         this.setState({
@@ -35,8 +35,9 @@ class Log extends Component {
           {this.state.userLogs && this.state.userLogs.map((log) =>
             <div key = {log.id}>
               <h4> Log {log.id} </h4>
-              <p>Minutes: {log.minutes} </p>
+              <p>Time: {log.time} </p>
               <p>Notes: {log.notes} </p>
+              <p>Link: {log.link} </p>
               <button>Edit Log</button>
               <button onClick={()=>{this.deleteLog(log.id)}}>Delete Log</button>
             </div>
