@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 
 class Log extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       userCategories: null,
       userLogs: null
@@ -20,9 +20,10 @@ class Log extends Component {
   render() {
     return (
       <div className="dash">
+          <h3> Category: {this.props.name} </h3>
           {this.state.userLogs && this.state.userLogs.map((log) =>
             <div key = {log.id}>
-              <h4> Log: {log.id} </h4>
+              <h4> Log {log.id} </h4>
               <p>Minutes: {log.minutes} </p>
               <p>Notes: {log.notes} </p>
             </div>

@@ -20,10 +20,11 @@ class CategoryList extends Component {
   render() {
     return (
       <div className="dash">
+          <h2>Dashboard</h2>
           {this.state.userCategories && this.state.userCategories.map((category) =>
             <div key = {category.id}>
-              <h2> {category.name} </h2>
-              <Log />
+              <Log id={category.id} name={category.name} />
+              <hr />
             </div>
            )}
       </div>
