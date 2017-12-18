@@ -26,6 +26,7 @@ class Log extends Component {
               <h4> Log {log.id} </h4>
               <p>Minutes: {log.minutes} </p>
               <p>Notes: {log.notes} </p>
+              <p>Timestamp: {Date.parse(log.created_at)}</p>
             </div>
            )}
       </div>
