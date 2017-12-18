@@ -152,7 +152,7 @@ class App extends Component {
 
           <CategoryList />
 
-            <h2>Leader Board</h2>
+            <h2></h2>
           { /* (this.state.userDataReceived)
             ? this.renderUsers()
             : <p>Loading...</p>
