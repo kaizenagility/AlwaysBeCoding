@@ -9,7 +9,9 @@ class LogsController < ApplicationController
 
   def create
     log = Log.new(minutes: params[:minutes],
-                  notes: params[:notes])
+                  notes: params[:notes],
+                  category_id: params[:category_id],
+                  user_id: params[:user_id])
     log.save
     render json: {status: "log successful", log: log}
   end

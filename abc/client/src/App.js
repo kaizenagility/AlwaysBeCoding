@@ -63,8 +63,17 @@ class App extends Component {
   //   }).catch(err => console.log(err));
   // }
 
-  handleLogFormSubmit() {
-
+  handleLogFormSubmit(e, data) {
+    e.preventDefault();
+    fetch('/users/13/categories/7/logs', {
+      method: 'POST',
+      body: JSON.stringify({
+        log: data,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    }).then(res => res.json())
   }
 
   handleLogout() {
@@ -130,7 +139,7 @@ class App extends Component {
 
           <AddLogForm />
 
-            <h2>LeaderBoard:</h2>
+            <h2>Leader Board:</h2>
           { (this.state.userDataReceived)
             ? this.renderUsers()
             : <p>Loading...</p>
