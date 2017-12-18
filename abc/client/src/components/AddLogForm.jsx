@@ -26,7 +26,7 @@ class AddLogForm extends Component {
           <form onSubmit={(e) => this.props.handleLogFormSubmit(e, this.state)}>
             <select name="category_id" value={this.state.value} onChange={this.handleChange}>
               <option value="3">Coding</option>
-              <option value="4">Art & Design</option>
+              <option value="4">Art</option>
             </select>
             <input type="text" name="minutes" placeholder="minutes" value={this.state.minutes} onChange={this.handleChange} />
             <input type="textarea" name="notes" placeholder="notes" value={this.state.notes} onChange={this.handleChange} />

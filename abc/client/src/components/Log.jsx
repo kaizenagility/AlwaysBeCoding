@@ -7,8 +7,13 @@ class Log extends Component {
       userCategories: null,
       userLogs: null
     }
+    this.renderLogs = this.renderLogs.bind(this);
+    this.deleteLog = this.deleteLog.bind(this);
   }
   componentDidMount() {
+    this.renderLogs();
+  }
+  renderLogs(){
     fetch('/users/13/categories/7/logs')
       .then(res => res.json())
       .then(res => {
@@ -16,6 +21,13 @@ class Log extends Component {
           userLogs: res
         })
       }).catch(err => console.log(err));
+  }
+  deleteLog(id) {
+    fetch(`users/13/categories/7/logs/${id}`, {
+      method: 'DELETE'
+    }).then((res)=>{this.renderLogs();})
+    .catch(err => console.log(err));
+
   }
   render() {
     return (
@@ -26,7 +38,8 @@ class Log extends Component {
               <h4> Log {log.id} </h4>
               <p>Minutes: {log.minutes} </p>
               <p>Notes: {log.notes} </p>
-              <p>Timestamp: {Date.parse(log.created_at)}</p>
+              <button>Edit Log</button>
+              <button onClick={()=>{this.deleteLog(log.id)}}>Delete Log</button>
             </div>
            )}
       </div>
