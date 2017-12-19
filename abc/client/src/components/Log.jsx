@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import EditLogForm from './EditLogForm.jsx'
+import Moment from 'react-moment';
 
 class Log extends Component {
   constructor(props) {
@@ -68,10 +69,11 @@ class Log extends Component {
     }
     return (
       <div className="dash">
-          <h3> Category: {this.props.name} </h3>
+          <h3> {this.props.name} </h3>
           {this.state.userLogs && this.state.userLogs.map((log) =>
             <div key = {log.id}>
-              <h4> Log {log.id} </h4>
+              <h4> {log.created_at} </h4>
+              <Moment> {log.created_at} </Moment>
               <p>Time: {log.time} </p>
               <p>Notes: {log.notes} </p>
               <p>Link: {log.link} </p>
