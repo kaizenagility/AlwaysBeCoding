@@ -13,6 +13,7 @@ class Log extends Component {
     this.renderLogs = this.renderLogs.bind(this);
     this.deleteLog = this.deleteLog.bind(this);
     this.updateLog = this.updateLog.bind(this);
+    this.cancelEdit = this.cancelEdit.bind(this);
   }
   componentDidMount() {
     this.renderLogs();
@@ -58,6 +59,9 @@ class Log extends Component {
   edit(id) {
     this.setState({editID: id});
   }
+  cancelEdit() {
+    this.setState({editID: null});
+  }
   render() {
     if (this.props.lastUpdated > this.state.lastUpdated) {
       this.renderLogs();
@@ -71,7 +75,7 @@ class Log extends Component {
               <p>Time: {log.time} </p>
               <p>Notes: {log.notes} </p>
               <p>Link: {log.link} </p>
-              {this.state.editID === log.id && <EditLogForm id={log.id} time={log.time} notes={log.notes} link={log.link} category_id={this.props.id} update={this.updateLog} />}
+              {this.state.editID === log.id && <EditLogForm id={log.id} time={log.time} notes={log.notes} link={log.link} category_id={this.props.id} update={this.updateLog} cancel={this.cancelEdit} />}
               <button onClick={()=>{this.edit(log.id)}}>Edit Log</button>
               <button onClick={()=>{this.deleteLog(log.id)}}>Delete Log</button>
             </div>

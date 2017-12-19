@@ -9,7 +9,8 @@ class EditLogForm extends Component {
       notes: this.props.notes,
       link: this.props.link,
       category_id: this.props.category_id,
-      user_id: this.props.user_id
+      user_id: this.props.user_id,
+      editID: this.props.edit
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -39,7 +40,8 @@ class EditLogForm extends Component {
             <input type="text" name="link" placeholder="link" value={this.state.link} onChange={this.handleChange} />
             <input type="hidden" name="user_id" value="13" />
             <input type="hidden" name="id" value={this.state.id} />
-            <input type="submit" value="Log It!" />
+            <input type="submit" value="Update" />
+            <button onClick={(e) => this.props.cancel()}>Cancel</button>
           </form>
       </div>
     );
