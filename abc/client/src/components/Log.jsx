@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import EditLogForm from './EditLogForm.jsx'
 
 class Log extends Component {
   constructor(props) {
@@ -6,10 +7,12 @@ class Log extends Component {
     this.state = {
       userCategories: null,
       userLogs: null,
-      lastUpdated: 0
+      lastUpdated: 0,
+      editID: null,
     }
     this.renderLogs = this.renderLogs.bind(this);
     this.deleteLog = this.deleteLog.bind(this);
+    this.updateLog = this.updateLog.bind(this);
   }
   componentDidMount() {
     this.renderLogs();
@@ -30,6 +33,26 @@ class Log extends Component {
     }).then((res)=>{this.renderLogs();})
     .catch(err => console.log(err));
   }
+  updateLog(e, data) {
+    e.preventDefault();
+    fetch(`/users/13/categories/${data.category_id}/logs/${data.id}`, {
+      method: 'PUT',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    }).then(res => res.json())
+    .then(res => {
+      this.setState({
+        userData: res,
+        userDataReceived: true,
+        logUpdated: Date.now()
+      })
+    }).catch(err => console.log(err));
+  }
+  edit(id) {
+    this.setState({editID: id});
+  }
   render() {
     if (this.props.lastUpdated > this.state.lastUpdated) {
       this.renderLogs();
@@ -43,7 +66,8 @@ class Log extends Component {
               <p>Time: {log.time} </p>
               <p>Notes: {log.notes} </p>
               <p>Link: {log.link} </p>
-              <button>Edit Log</button>
+              {this.state.editID === log.id && <EditLogForm id={log.id} time={log.time} notes={log.notes} link={log.link} category_id={this.props.id} update={this.updateLog} />}
+              <button onClick={()=>{this.edit(log.id)}}>Edit Log</button>
               <button onClick={()=>{this.deleteLog(log.id)}}>Delete Log</button>
             </div>
            )}

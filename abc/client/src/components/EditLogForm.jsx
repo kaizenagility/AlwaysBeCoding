@@ -4,6 +4,7 @@ class EditLogForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: this.props.id,
       time: this.props.time,
       notes: this.props.notes,
       link: this.props.link,
@@ -24,7 +25,7 @@ class EditLogForm extends Component {
   render() {
     return (
       <div className="addLogForm">
-          <form onSubmit={(e) => this.props.handleLogFormSubmit(e, this.state)}>
+          <form onSubmit={(e) => this.props.update(e, this.state)}>
             <select name="category_id" value={this.state.category_id} onChange={this.handleChange}>
               <option value="7">Coding Practice</option>
               <option value="11">Job Applications</option>
@@ -37,6 +38,7 @@ class EditLogForm extends Component {
             <input type="textarea" name="notes" placeholder="notes" value={this.state.notes} onChange={this.handleChange} />
             <input type="text" name="link" placeholder="link" value={this.state.link} onChange={this.handleChange} />
             <input type="hidden" name="user_id" value="13" />
+            <input type="hidden" name="id" value={this.state.id} />
             <input type="submit" value="Log It!" />
           </form>
       </div>
