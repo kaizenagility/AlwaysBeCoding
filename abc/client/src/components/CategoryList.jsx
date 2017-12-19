@@ -29,11 +29,9 @@ class CategoryList extends Component {
     }
     return (
       <div className="dash">
-          <h2>Dashboard</h2>
           {this.state.userCategories && this.state.userCategories.map((category) =>
-            <div key = {category.id}>
+            <div id="category" key = {category.id}>
               <Log id={category.id} name={category.name} lastUpdated={this.state.lastUpdated} />
-              <hr />
             </div>
            )}
       </div>

@@ -150,6 +150,8 @@ class App extends Component {
 
           <AddLogForm handleLogFormSubmit={this.handleLogFormSubmit} />
 
+          <h1>Dashboard</h1>
+
           <Dashboard users={this.state.userData} />
 
           <CategoryList logUpdated={this.state.logUpdated}/>

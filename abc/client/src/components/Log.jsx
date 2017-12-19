@@ -68,17 +68,17 @@ class Log extends Component {
       this.renderLogs();
     }
     return (
-      <div className="dash">
-          <h3> {this.props.name} </h3>
+      <div className="log">
+          <h2> {this.props.name} </h2>
           {this.state.userLogs && this.state.userLogs.map((log) =>
             <div className="log" key = {log.id}>
-              <h4><Moment format="MM/DD/YY h:mm a">{log.created_at}</Moment></h4>
+              <h3><Moment format="MM/DD/YY h:mm a">{log.created_at}</Moment></h3>
               <p>Time: {log.time} </p>
               <p>Notes: {log.notes} </p>
               <p>Link: {log.link} </p>
               {this.state.editID === log.id && <EditLogForm id={log.id} time={log.time} notes={log.notes} link={log.link} category_id={this.props.id} update={this.updateLog} cancel={this.cancelEdit} />}
               <button onClick={()=>{this.edit(log.id)}}>Edit Log</button>
-              <button onClick={()=>{this.deleteLog(log.id)}}>Delete Log</button>
+              <button onClick={()=>{this.deleteLog(log.id)}}>Delete</button>
             </div>
            )}
       </div>

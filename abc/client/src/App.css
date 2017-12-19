@@ -3,6 +3,19 @@
   background-color: white;
 }
 
+h1 {
+  color: #015249;
+  font-size: 3em;
+  font-family: Cursive;
+}
+
+h2 {
+  font-size: 2em;
+  color: #57BC90;
+}
+
+/************ NavBar ************/
+
 .nav {
   background-color: #77c9D4;
   display: flex;
@@ -23,11 +36,7 @@
   color: black;
 }
 
-h1 {
-  color: #015249;
-  font-size: 3em;
-  font-family: Cursive;
-}
+/************ Form ************/
 
 input {
   font-size: 1.5em;
@@ -51,7 +60,7 @@ input[type=textarea] {
   border-radius: 0.25em;
   margin: 0.5em;
   width: 300px;
-  height: 250px;
+  height: 180px;
   color: gray;
 }
 
@@ -75,6 +84,7 @@ input[type=submit] {
   color: white;
   width: 100px;
   height: 50px;
+  border-radius: 0.5em;
 }
 
 input[type=submit]:hover {
@@ -85,3 +95,38 @@ input[type=submit]:active {
   color: black;
 }
 
+/************ Dashboard ************/
+
+button {
+  background-color: #77c9D4;
+  color: white;
+  width: 80px;
+  height: 30px;
+  border-radius: 0.5em;
+  font-size: 1em;
+}
+
+button:hover {
+  background-color: #F7882F;
+}
+
+button:active {
+  color: black;
+}
+
+/************ Category ************/
+
+/************ Log ************/
+.dash {
+  display: flex;
+  width: 800px;
+  flex-wrap: wrap;
+}
+
+.log {
+  flex: 1;
+  border-top: 1px dotted lightgray;
+  width: 300px;
+  overflow: scroll;
+  margin: 25px;
+}
