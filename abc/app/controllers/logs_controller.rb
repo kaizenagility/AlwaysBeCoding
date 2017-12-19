@@ -30,8 +30,11 @@ class LogsController < ApplicationController
 
   def update
     log = Log.update(params[:id],
-                    minutes: params[:minutes],
-                    notes: params[:notes])
+                  time: params[:time],
+                  notes: params[:notes],
+                  link: params[:link],
+                  category_id: params[:category_id],
+                  user_id: params[:user_id])
     render json: {status: "log update successful", log: log}
   end
 end
