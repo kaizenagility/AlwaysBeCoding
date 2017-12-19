@@ -19,6 +19,7 @@ class App extends Component {
       userDataReceived: false,
       userCategories: null,
       userLogs: null,
+      logUpdated: 0
     };
     // this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this);
     // this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
@@ -79,6 +80,7 @@ class App extends Component {
       this.setState({
         userData: res,
         userDataReceived: true,
+        logUpdated: Date.now()
       })
     }).catch(err => console.log(err));
   }
@@ -150,7 +152,7 @@ class App extends Component {
 
           <Dashboard users={this.state.userData} />
 
-          <CategoryList />
+          <CategoryList logUpdated={this.state.logUpdated}/>
 
             <h2></h2>
           { /* (this.state.userDataReceived)

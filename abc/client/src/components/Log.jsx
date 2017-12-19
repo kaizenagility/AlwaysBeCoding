@@ -5,7 +5,8 @@ class Log extends Component {
     super(props);
     this.state = {
       userCategories: null,
-      userLogs: null
+      userLogs: null,
+      lastUpdated: 0
     }
     this.renderLogs = this.renderLogs.bind(this);
     this.deleteLog = this.deleteLog.bind(this);
@@ -18,7 +19,8 @@ class Log extends Component {
       .then(res => res.json())
       .then(res => {
         this.setState({
-          userLogs: res
+          userLogs: res,
+          lastUpdated: this.props.lastUpdated
         })
       }).catch(err => console.log(err));
   }
@@ -29,6 +31,9 @@ class Log extends Component {
     .catch(err => console.log(err));
   }
   render() {
+    if (this.props.lastUpdated > this.state.lastUpdated) {
+      this.renderLogs();
+    }
     return (
       <div className="dash">
           <h3> Category: {this.props.name} </h3>

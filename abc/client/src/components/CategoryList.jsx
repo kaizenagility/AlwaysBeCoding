@@ -5,25 +5,34 @@ class CategoryList extends Component {
   constructor() {
     super();
     this.state = {
-      userCategories: null
+      userCategories: null,
+      lastUpdated: Date.now()
     }
+    this.fetchCategories = this.fetchCategories.bind(this);
   }
   componentDidMount() {
+    this.fetchCategories();
+  }
+  fetchCategories() {
     fetch('/users/13/categories/')
       .then(res => res.json())
       .then(res => {
         this.setState({
-          userCategories: res
+          userCategories: res,
+          lastUpdated: this.props.logUpdated
         })
       }).catch(err => console.log(err));
   }
   render() {
+    if (this.props.logUpdated > this.state.lastUpdated) {
+      this.fetchCategories();
+    }
     return (
       <div className="dash">
           <h2>Dashboard</h2>
           {this.state.userCategories && this.state.userCategories.map((category) =>
             <div key = {category.id}>
-              <Log id={category.id} name={category.name} />
+              <Log id={category.id} name={category.name} lastUpdated={this.state.lastUpdated} />
               <hr />
             </div>
            )}
