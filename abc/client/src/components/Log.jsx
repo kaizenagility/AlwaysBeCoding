@@ -71,9 +71,8 @@ class Log extends Component {
       <div className="dash">
           <h3> {this.props.name} </h3>
           {this.state.userLogs && this.state.userLogs.map((log) =>
-            <div key = {log.id}>
-              <h4> {log.created_at} </h4>
-              <Moment> {log.created_at} </Moment>
+            <div className="log" key = {log.id}>
+              <h4><Moment format="MM/DD/YY h:mm a">{log.created_at}</Moment></h4>
               <p>Time: {log.time} </p>
               <p>Notes: {log.notes} </p>
               <p>Link: {log.link} </p>

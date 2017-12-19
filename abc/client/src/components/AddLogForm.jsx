@@ -32,10 +32,10 @@ class AddLogForm extends Component {
               <option value="14">Project Worklog</option>
               <option value="13">Career Coaching</option>
               <option value="15">Other</option>
-            </select>
-            <input type="text" name="time" placeholder="time" value={this.state.time} onChange={this.handleChange} />
-            <input type="textarea" name="notes" placeholder="notes" value={this.state.notes} onChange={this.handleChange} />
-            <input type="text" name="link" placeholder="link" value={this.state.link} onChange={this.handleChange} />
+            </select><br/>
+            <input type="text" name="time" placeholder="minutes" value={this.state.time} onChange={this.handleChange} /><br/><br/>
+            <input type="textarea" name="notes" placeholder="notes" value={this.state.notes} onChange={this.handleChange} /> <br/>
+            <input type="text" name="link" placeholder="link" value={this.state.link} onChange={this.handleChange} /> <br/>
             <input type="hidden" name="user_id" value="13" />
             <input type="submit" value="Log It!" />
           </form>

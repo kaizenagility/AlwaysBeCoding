@@ -1,28 +1,87 @@
 .App {
   text-align: center;
+  background-color: white;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.nav {
+  background-color: #77c9D4;
+  display: flex;
+  box-shadow: 2px gray;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+.nav a, span {
+  /*background-color: #fae1b7;*/
+  color: white;
+  text-decoration: none;
+  flex: 1;
+  padding: 1em;
+  font-size: 1.2em;
+}
+
+.nav a:hover, span:hover {
+  opacity: 0.5;
+  color: black;
+}
+
+h1 {
+  color: #015249;
+  font-size: 3em;
+  font-family: Cursive;
+}
+
+input {
+  font-size: 1.5em;
+  /*border-radius: 0.25em;*/
+  background: transparent;
+  outline: 0;
+  border: 0;
+  border-bottom: 1px solid gray;
+  padding-left: 10px;
+  color: gray;
+  margin: 0.5em;
+}
+
+input:focus {
+  background-color: #FFFBFF;
+  border-bottom: 2px solid #015249;
+}
+
+input[type=textarea] {
+  font-size: 1.5em;
+  border-radius: 0.25em;
+  margin: 0.5em;
+  width: 300px;
+  height: 250px;
+  color: gray;
+}
+
+input[type=textarea]:focus {
+  background-color: #FFFBFF;
+}
+
+select {
+  font-size: 1.5em;
+  padding: 0.5em;
+  margin: 0.5em;
+  width: 225px;
+  border: 1px solid #ccc;
+  height: 60px;
+  background-color: #57BC90;
   color: white;
 }
 
-.App-title {
-  font-size: 1.5em;
+input[type=submit] {
+  background-color: #015249;
+  color: white;
+  width: 100px;
+  height: 50px;
 }
 
-.App-intro {
-  font-size: large;
+input[type=submit]:hover {
+  background-color: #F7882F;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+input[type=submit]:active {
+  color: black;
 }
+
