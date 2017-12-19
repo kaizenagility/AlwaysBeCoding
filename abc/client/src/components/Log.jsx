@@ -48,7 +48,8 @@ class Log extends Component {
         userDataReceived: true,
         logUpdated: Date.now()
       })
-    }).catch(err => console.log(err));
+    }).then(() => this.renderLogs())
+    .catch(err => console.log(err));
   }
   edit(id) {
     this.setState({editID: id});
