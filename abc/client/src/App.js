@@ -140,15 +140,14 @@ class App extends Component {
               : <LoginForm handleLoginSubmit={this.handleLoginSubmit} />}
           />
 
-
-
           <h1>Always Be Coding</h1>
 
           <AddLogForm handleLogFormSubmit={this.handleLogFormSubmit} />
 
-          <Dashboard users={this.state.userData} logUpdated={this.state.logUpdated} />
+          <Route path="/dash" component={Dashboard} />
 
-            <h2></h2>
+
+
           { /* (this.state.userDataReceived)
             ? this.renderUsers()
             : <p>Loading...</p>
