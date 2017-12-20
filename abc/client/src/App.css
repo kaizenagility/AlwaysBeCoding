@@ -97,6 +97,14 @@ input[type=submit]:active {
 
 /************ Dashboard ************/
 
+.dash {
+  text-align: center;
+}
+
+.dash h1 {
+  margin-left: 250px;
+}
+
 button {
   background-color: #77c9D4;
   color: white;

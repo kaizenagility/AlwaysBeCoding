@@ -4,6 +4,7 @@ import './App.css';
 import {BrowserRouter as Router, Link, Redirect, Route} from 'react-router-dom';
 
 import Auth from './modules/Auth';
+import Nav from './components/Nav';
 import RegisterForm from './components/RegisterForm';
 import LoginForm from './components/LoginForm';
 import Dashboard from './components/Dashboard';
@@ -126,12 +127,7 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-         <div className="nav">
-            <Link to="/login">Login</Link><br />
-            <Link to="/register">Register</Link><br />
-            <Link to="/dash">Dashboard</Link> <br />
-            <span onClick={this.handleLogout}>Logout</span>
-          </div>
+         <Nav />
           <Route
             exact path="/register"
             render={() => (this.state.auth)
@@ -144,19 +140,12 @@ class App extends Component {
               : <LoginForm handleLoginSubmit={this.handleLoginSubmit} />}
           />
 
+          <Route exact path="/dash" component={Dashboard} />
 
-          <h1>Always Be Coding</h1>
+          <Route exact path="/journal" render={props => <AddLogForm handleLogFormSubmit={this.handleLogFormSubmit} /> } />
 
 
-          <AddLogForm handleLogFormSubmit={this.handleLogFormSubmit} />
 
-          <h1>Dashboard</h1>
-
-          <Dashboard users={this.state.userData} />
-
-          <CategoryList logUpdated={this.state.logUpdated}/>
-
-            <h2></h2>
           { /* (this.state.userDataReceived)
             ? this.renderUsers()
             : <p>Loading...</p>

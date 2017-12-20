@@ -24,6 +24,8 @@ class AddLogForm extends Component {
   render() {
     return (
       <div className="addLogForm">
+          <h1>Always Be Coding</h1>
+
           <form onSubmit={(e) => this.props.handleLogFormSubmit(e, this.state)}>
             <select name="category_id" value={this.state.category_id} onChange={this.handleChange}>
               <option value="7">Coding Practice</option>
