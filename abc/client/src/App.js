@@ -140,11 +140,9 @@ class App extends Component {
               : <LoginForm handleLoginSubmit={this.handleLoginSubmit} />}
           />
 
-          <h1>Always Be Coding</h1>
+          <Route exact path="/dash" component={Dashboard} />
 
-          <AddLogForm handleLogFormSubmit={this.handleLogFormSubmit} />
-
-          <Route path="/dash" component={Dashboard} />
+          <Route exact path="/journal" render={props => <AddLogForm handleLogFormSubmit={this.handleLogFormSubmit} /> } />
 
 
 

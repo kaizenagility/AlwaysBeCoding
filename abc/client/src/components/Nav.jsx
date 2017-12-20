@@ -11,10 +11,11 @@ class Nav extends Component {
   render(){
     return (
       <div className="nav">
-        <Link to="/login">Login</Link><br />
-        <Link to="/register">Register</Link><br />
         <Link to="/dash">Dashboard</Link> <br />
         <Link to="/journal">Journal</Link>
+        <Link to="/logout">Logout</Link>
+        {/* <Link to="/login">Login</Link><br />
+         <Link to="/register">Register</Link><br /> */}
       </div>
     )
   }
